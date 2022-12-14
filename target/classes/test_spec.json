@@ -1,0 +1,149 @@
+[
+  {
+    "operation": "cardinality",
+    "spec": {
+      "Order": {
+        "HeaderCharges": {
+          "HeaderCharge": "MANY"
+        },
+        "HeaderTaxes": {
+          "HeaderTax": "MANY"
+        },
+        "PaymentMethods":{
+          "PaymentMethod": "MANY"
+        },
+        "ChargeTransactionDetails": {
+          "ChargeTransactionDetail":"MANY"
+        },
+        "Promotions": {
+          "Promotion": "MANY"
+        },
+        "Instructions": {
+          "Instruction": "MANY"
+        },
+        "Shipments": {
+          "Shipment": "MANY"
+
+
+        },
+        "ReturnOrders": {
+          "ReturnOrder": "MANY"
+        },
+        "OrderLines": {
+          "OrderLine": "MANY"
+        },
+        "OrderAudit": {
+          "OrderAuditLevels": {
+            "OrderAuditLevel": "MANY"
+          }
+        },
+        "OrderHoldTypes": {
+          "OrderHoldType": "MANY"
+        },
+        "References": {
+          "Reference": "MANY"
+        }
+
+      }
+    }
+  },
+  {
+    "operation": "cardinality",
+    "spec": {
+      "Order": {
+        "OrderLines": {
+          "OrderLine": {
+            "*": {
+              "ItemDetails": {
+                "ItemAliasList": {
+                  "ItemAlias": "MANY"
+                }
+              },
+              "Promotions": {
+                "Promotion": "MANY"
+              },
+              "Instructions": {
+                "Instruction": "MANY"
+              },
+              "LineCharges": {
+                "LineCharge": "MANY"
+              },
+              "OrderStatuses": {
+                "OrderStatus": "MANY"
+              },
+              "ReturnOrderLines": {
+                "OrderLine": "MANY"
+              },
+              "OrderAudit": {
+                "OrderAuditLevels": {
+                  "OrderAuditLevel": "MANY"
+                }
+              }
+            }
+          }
+        },
+        "Shipments": {
+          "Shipment": {
+            "*": {
+              "Containers": {
+                "Container": "MANY"
+              },
+              "ShipmentLines": {
+                "ShipmentLine": "MANY"
+              },
+              "ShipmentStatusAudits": {
+                "ShipmentStatusAudit": "MANY"
+              }
+            }
+          }
+        },
+        "ReturnOrders": {
+          "ReturnOrder": {
+            "*": {
+              "OrderLines": {
+                "OrderLine": "MANY"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "cardinality",
+    "spec": {
+      "Order": {
+        "Shipments": {
+          "Shipment": {
+            "*": {
+              "Containers": {
+                "Container": {
+                  "*": {
+                    "ContainerDetails": {
+                      "ContainerDetail": "MANY"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ReturnOrders": {
+          "ReturnOrder": {
+            "*": {
+              "OrderLines": {
+                "OrderLine":{
+                  "*": {
+                    "OrderStatuses": {
+                      "OrderStatus": "MANY"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]
